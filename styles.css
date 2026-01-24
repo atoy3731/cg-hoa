@@ -37,9 +37,7 @@ body {
 body {
   margin: 0;
   font-family: var(--font);
-  background: radial-gradient(1200px 700px at 20% 0%, rgba(94, 226, 140, 0.16), transparent 55%),
-    radial-gradient(900px 600px at 80% 10%, rgba(102, 199, 255, 0.16), transparent 60%),
-    linear-gradient(180deg, #2a2f2a 0%, #343a34 55%, #2a2f2a 100%);
+  background: #2a2f2a;
   color: var(--text);
   line-height: 1.5;
 }
@@ -77,7 +75,7 @@ a {
   top: 0;
   z-index: 50;
   backdrop-filter: blur(14px);
-  background: rgba(42, 47, 42, 0.78);
+  background: rgba(42, 47, 42, 0.85);
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
@@ -143,6 +141,9 @@ a {
   position: relative;
   overflow: hidden;
   padding: 54px 0 42px;
+  background: radial-gradient(1200px 700px at 20% 0%, rgba(94, 226, 140, 0.16), transparent 55%),
+    radial-gradient(900px 600px at 80% 10%, rgba(102, 199, 255, 0.16), transparent 60%),
+    #2a2f2a;
 }
 
 .hero-media {
@@ -262,9 +263,7 @@ a {
   right: 0;
   bottom: -1px;
   height: 70px;
-  background: radial-gradient(90px 40px at 20% 30%, rgba(94, 226, 140, 0.24), transparent 60%),
-    radial-gradient(110px 50px at 55% 10%, rgba(102, 199, 255, 0.20), transparent 60%),
-    linear-gradient(180deg, transparent 0%, rgba(42, 47, 42, 1) 80%);
+  background: linear-gradient(180deg, transparent 0%, #2a2f2a 80%);
   filter: blur(0.2px);
   opacity: 0.95;
 }
@@ -272,6 +271,7 @@ a {
 /* --------- Strip --------- */
 .strip {
   padding: 6px 0 26px;
+  background: #2a2f2a;
 }
 
 .strip-grid {
@@ -295,12 +295,13 @@ a {
 /* --------- Sections --------- */
 .section {
   padding: 54px 0;
+  background: #2a2f2a;
 }
 
 .section-alt {
   background: radial-gradient(900px 520px at 20% 0%, rgba(94, 226, 140, 0.11), transparent 60%),
     radial-gradient(700px 520px at 90% 0%, rgba(102, 199, 255, 0.11), transparent 60%),
-    rgba(255, 255, 255, 0.04);
+    #343a34;
   border-top: 1px solid rgba(255, 255, 255, 0.09);
   border-bottom: 1px solid rgba(255, 255, 255, 0.09);
 }
@@ -466,7 +467,7 @@ code {
 .footer {
   padding: 28px 0 36px;
   border-top: 1px solid rgba(255, 255, 255, 0.11);
-  background: rgba(0, 0, 0, 0.14);
+  background: rgba(0, 0, 0, 0.20);
 }
 
 .footer-inner {
