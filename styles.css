@@ -257,12 +257,19 @@ a:hover { text-decoration: underline; }
   max-width: 70ch;
 }
 
-/* ---------------- FAQs ---------------- */
+/* Replace the FAQ grid with independent columns */
 .faq-grid {
-  margin-top: 18px;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
+  columns: 2;
+  column-gap: 12px; /* match your spacing */
+}
+
+/* Each FAQ card should not split across columns */
+.faq-grid .faq {
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  display: inline-block;
+  width: 100%;
+  margin: 0 0 12px; /* vertical spacing between cards */
 }
 
 .faq {
