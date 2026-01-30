@@ -350,7 +350,21 @@ details[open] summary::after { content: "—"; }
 
 /* ---------------- Responsive ---------------- */
 @media (max-width: 900px) {
-  .faq-grid, .links-grid { grid-template-columns: 1fr; }
-  .hero-meta { grid-template-columns: 1fr; }
-  .hero-inner { padding-top: 28px; }
+  /* FAQs use CSS columns, not grid */
+  .faq-grid {
+    columns: 1;
+  }
+
+  /* These are still grids */
+  .links-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-meta {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-inner {
+    padding-top: 28px;
+  }
 }
