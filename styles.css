@@ -20,9 +20,7 @@
 
 *,
 *::before,
-*::after {
-  box-sizing: border-box;
-}
+*::after { box-sizing: border-box; }
 
 html, body { height: 100%; }
 
@@ -51,7 +49,7 @@ a:hover { text-decoration: underline; }
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 50;
+  z-index: 100;
   background: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(8px) saturate(1.2);
   border-bottom: 1px solid rgba(0,0,0,0.06);
@@ -88,19 +86,18 @@ a:hover { text-decoration: underline; }
 .brand-name { font-weight: 800; letter-spacing: -0.2px; }
 .brand-sub { font-size: 0.9rem; color: var(--muted); margin-top: 2px; }
 
+/* Desktop nav */
 .nav {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
 }
-
 .nav a {
   color: var(--text);
   padding: 9px 12px;
   border-radius: 999px;
   border: 1px solid transparent;
 }
-
 .nav a:hover {
   text-decoration: none;
   border-color: rgba(47, 107, 79, 0.22);
@@ -111,6 +108,7 @@ a:hover { text-decoration: underline; }
 .hero {
   position: relative;
   padding: 28px 0 40px;
+  overflow: hidden;
 }
 
 .hero-media {
@@ -167,7 +165,6 @@ a:hover { text-decoration: underline; }
   font-size: 1.03rem;
 }
 
-/* Buttons: clean, not “startup” */
 .hero-actions {
   display: flex;
   gap: 10px;
@@ -186,7 +183,6 @@ a:hover { text-decoration: underline; }
   color: var(--text);
   font-weight: 650;
 }
-
 .btn:hover {
   text-decoration: none;
   border-color: rgba(47, 107, 79, 0.28);
@@ -199,11 +195,6 @@ a:hover { text-decoration: underline; }
   border-color: rgba(47, 107, 79, 0.22);
 }
 
-.btn-primary:hover {
-  box-shadow: 0 14px 26px rgba(47, 107, 79, 0.18);
-}
-
-/* Meta: make it feel like “info row”, not “cards everywhere” */
 .hero-meta {
   margin-top: 10px;
   padding-top: 12px;
@@ -213,25 +204,16 @@ a:hover { text-decoration: underline; }
   gap: 10px;
 }
 
-.meta-item {
-  padding: 10px 0;
-}
+.meta-item { padding: 10px 0; }
+.meta-label { font-size: 0.84rem; color: var(--muted); margin-bottom: 2px; }
 
-.meta-label {
-  font-size: 0.84rem;
-  color: var(--muted);
-  margin-bottom: 2px;
-}
-
-/* Optional wave: tone it down so it’s not “template-y” */
 .hero-wave {
   position: absolute;
   left: 0;
   right: 0;
   bottom: -1px;
   height: 44px;
-  background:
-    linear-gradient(180deg, transparent 0%, var(--bg) 100%);
+  background: linear-gradient(180deg, transparent 0%, var(--bg) 100%);
   z-index: 1;
 }
 
@@ -240,7 +222,6 @@ a:hover { text-decoration: underline; }
   padding: 56px 0;
 }
 
-/* Use subtle separators instead of full “cards” */
 .section + .section {
   border-top: 1px solid rgba(0,0,0,0.06);
   background: rgba(255,255,255,0.55);
@@ -251,26 +232,24 @@ a:hover { text-decoration: underline; }
   font-size: 1.7rem;
   letter-spacing: -0.4px;
 }
-
 .section-sub {
   margin: 8px 0 0;
   color: var(--muted);
   max-width: 70ch;
 }
 
-/* Replace the FAQ grid with independent columns */
+/* ---------------- FAQs (independent columns) ---------------- */
 .faq-grid {
+  margin-top: 18px;
   columns: 2;
-  column-gap: 12px; /* match your spacing */
+  column-gap: 12px;
 }
-
-/* Each FAQ card should not split across columns */
 .faq-grid .faq {
   break-inside: avoid;
   -webkit-column-break-inside: avoid;
   display: inline-block;
   width: 100%;
-  margin: 0 0 12px; /* vertical spacing between cards */
+  margin: 0 0 12px;
 }
 
 .faq {
@@ -285,15 +264,12 @@ a:hover { text-decoration: underline; }
   font-weight: 700;
   list-style: none;
 }
-
 .faq summary::-webkit-details-marker { display: none; }
-
 .faq summary::after {
   content: "＋";
   float: right;
   color: var(--muted);
 }
-
 details[open] summary::after { content: "—"; }
 
 .faq-body {
@@ -349,109 +325,107 @@ details[open] summary::after { content: "—"; }
 .footer-links a { margin-left: 10px; padding: 8px 10px; border-radius: 999px; color: var(--text); }
 .footer-links a:hover { background: rgba(47, 107, 79, 0.06); text-decoration: none; }
 
-/* ---------------- Responsive ---------------- */
-@media (max-width: 900px) {
-  /* FAQs use CSS columns, not grid */
-  .faq-grid {
-    columns: 1;
-  }
+/* ---------------- Mobile overlay menu ---------------- */
 
-  /* These are still grids */
-  .links-grid {
-    grid-template-columns: 1fr;
-  }
+/* Hidden on desktop */
+.menu-toggle { display: none; }
 
-  .hero-meta {
-    grid-template-columns: 1fr;
-  }
-
-  .hero-inner {
-    padding-top: 28px;
-  }
+/* Hamburger button */
+.menu-toggle {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid rgba(47, 107, 79, 0.22);
+  background: rgba(47, 107, 79, 0.06);
+  place-items: center;
+  cursor: pointer;
 }
 
-/* Default (desktop/tablet): show nav, hide reminder menu */
-.nav { display: flex; }
-.menu { display: none; }
+.hamburger,
+.hamburger::before,
+.hamburger::after {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  position: relative;
+}
 
-/* Mobile */
-@media (max-width: 700px) {
+.hamburger::before { top: -6px; }
+.hamburger::after  { top:  4px; }
+
+/* Overlay */
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+}
+.menu-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 16, 12, 0.45);
+}
+
+/* Sheet */
+.menu-sheet {
+  position: relative;
+  margin: 14px;
+  margin-left: auto;
+  width: min(320px, calc(100% - 28px));
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.97);
+  border: 1px solid rgba(0,0,0,0.10);
+  box-shadow: 0 18px 40px rgba(12, 20, 14, 0.20);
+  overflow: hidden;
+}
+
+.menu-sheet-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 12px;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+.menu-sheet-title { font-weight: 800; }
+
+.menu-close {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,0.10);
+  background: #fff;
+  cursor: pointer;
+}
+
+.menu-links {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  gap: 6px;
+}
+.menu-links a {
+  display: block;
+  padding: 12px 12px;
+  border-radius: 12px;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 650;
+}
+.menu-links a:hover {
+  background: rgba(47, 107, 79, 0.08);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .faq-grid { columns: 1; }
+  .links-grid { grid-template-columns: 1fr; }
+  .hero-meta { grid-template-columns: 1fr; }
+  .hero-inner { padding-top: 28px; }
+}
+
+@media (max-width: 768px) {
   .nav { display: none; }
-  .menu { display: block; position: relative; }
-
-  /* Hide Safari's default disclosure triangle */
-  .menu > summary::-webkit-details-marker { display: none; }
-  .menu > summary { list-style: none; }
-
-  .menu-btn {
-    cursor: pointer;
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
-    border: 1px solid rgba(47, 107, 79, 0.22);
-    background: rgba(47, 107, 79, 0.06);
-    display: grid;
-    place-items: center;
-    padding: 0;
-  }
-
-  /* Hamburger icon (3 lines) */
-  .hamburger,
-  .hamburger::before,
-  .hamburger::after {
-    content: "";
-    display: block;
-    width: 20px;
-    height: 2px;
-    background: var(--text);
-    border-radius: 2px;
-    position: relative;
-  }
-
-  .hamburger::before { top: -6px; position: relative; }
-  .hamburger::after  { top:  4px; position: relative; }
-
-  /* Turn into an X when open */
-  .menu[open] .hamburger {
-    background: transparent;
-  }
-  .menu[open] .hamburger::before {
-    top: 0;
-    transform: rotate(45deg);
-  }
-  .menu[open] .hamburger::after {
-    top: -2px;
-    transform: rotate(-45deg);
-  }
-
-  /* Dropdown panel */
-  .menu-panel {
-    position: absolute;
-    right: 0;
-    top: calc(100% + 10px);
-    min-width: 200px;
-    background: rgba(255, 255, 255, 0.97);
-    border: 1px solid rgba(0,0,0,0.10);
-    border-radius: 14px;
-    box-shadow: 0 18px 40px rgba(12, 20, 14, 0.18);
-    padding: 8px;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    z-index: 9999;
-  }
-
-  /* Each link on its own line, full width */
-  .menu-panel a {
-    display: block;
-    padding: 12px 12px;
-    border-radius: 12px;
-    color: var(--text);
-    text-decoration: none;
-    font-weight: 600;
-  }
-
-  .menu-panel a:hover {
-    background: rgba(47, 107, 79, 0.08);
-  }
+  .menu-toggle { display: grid; }
 }

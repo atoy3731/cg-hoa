@@ -9,7 +9,7 @@
       content="Clifton Grove Homeowners Association — neighborhood updates, FAQs, board contacts, and useful links."
     />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="icon" href="./assets/favicon.png" type="image/x-icon">
+    <link rel="icon" href="./assets/favicon.png" type="image/png" />
   </head>
 
   <body>
@@ -23,36 +23,47 @@
           </div>
         </div>
 
-        <!-- Desktop nav -->
+        
         <nav class="nav" aria-label="Primary navigation">
           <a href="#faqs">FAQs</a>
           <a href="#links">Useful Links</a>
         </nav>
 
-        <!-- Mobile menu -->
-        <details class="menu">
-          <summary class="menu-btn" aria-label="Open menu">
-            <span class="hamburger" aria-hidden="true"></span>
-          </summary>
-
-          <nav class="menu-panel" aria-label="Primary navigation">
-            <a href="#faqs">FAQs</a>
-            <a href="#links">Useful Links</a>
-          </nav>
-        </details>
+        <!-- Mobile hamburger -->
+        <button
+          class="menu-toggle"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <span class="hamburger" aria-hidden="true"></span>
+        </button>
       </div>
     </header>
 
+    <!-- Mobile menu overlay -->
+    <div class="menu-overlay" id="mobile-menu" hidden>
+      <div class="menu-backdrop" data-close></div>
+
+      <div class="menu-sheet" role="dialog" aria-modal="true" aria-label="Site menu">
+        <div class="menu-sheet-header">
+          <div class="menu-sheet-title">Menu</div>
+          <button class="menu-close" type="button" data-close aria-label="Close menu">
+            ✕
+          </button>
+        </div>
+
+        <nav class="menu-links" aria-label="Mobile navigation">
+          <a href="#faqs">FAQs</a>
+          <a href="#links">Useful Links</a>
+        </nav>
+      </div>
+    </div>
 
     <main id="main">
       <!-- HERO -->
       <section class="hero" aria-label="Clifton Grove hero">
-        <!-- Replace ./assets/hero.jpg with your own image if you want -->
-        <div
-          class="hero-media"
-          role="img"
-          aria-label="Tree-lined suburban neighborhood with homes"
-        ></div>
+        <div class="hero-media" role="img" aria-label="Tree-lined suburban neighborhood with homes"></div>
 
         <div class="container hero-inner">
           <div class="hero-card">
@@ -87,36 +98,6 @@
         <div class="hero-wave" aria-hidden="true"></div>
       </section>
 
-      <!-- INFO STRIP
-      <section class="strip">
-        <div class="container strip-grid">
-          <div class="strip-card">
-            <h2>Community Notices</h2>
-            <p>
-              Post neighborhood updates here: meetings, landscaping schedules, pool
-              reminders, snow policy, and more.
-            </p>
-            <p class="muted">Placeholder: “Next Board Meeting — TBD”</p>
-          </div>
-
-          <div class="strip-card">
-            <h2>Architectural Requests</h2>
-            <p>
-              Planning exterior changes? Submit an ARC request before starting work.
-              Add your forms and guidance here.
-            </p>
-            <p class="muted">Placeholder: “ARC Form — Coming Soon”</p>
-          </div>
-
-          <div class="strip-card">
-            <h2>Pay Dues</h2>
-            <p>
-              Dues can be paid by check. Please make your checks payable to Clifton Grove HOA.
-            </p>
-          </div>
-        </div>
-      </section> -->
-
       <!-- FAQS -->
       <section id="faqs" class="section">
         <div class="container">
@@ -131,12 +112,8 @@
             <details class="faq">
               <summary>When are HOA dues due?</summary>
               <div class="faq-body">
-                <p>
-                  Dues can be paid by check annually or bi-annually. Current HOA dues $600/year.
-                </p>
-                <p>
-                  Please make checks payable to: <b>Clifton Grove HOA</b>
-                </p>
+                <p>Dues can be paid by check annually or bi-annually. Current HOA dues <b>$600/year</b>.</p>
+                <p>Please make checks payable to: <b>Clifton Grove HOA</b></p>
               </div>
             </details>
 
@@ -144,7 +121,7 @@
               <summary>How do I submit an Architectural Review (ARC) request?</summary>
               <div class="faq-body">
                 <p>
-                  Placeholder: Download the ARC form, attach photos/specs, and email to
+                  Download the ARC form, attach photos/specs, and email to
                   <a href="mailto:arc@cliftongrove.org">arc@cliftongrove.org</a>.
                 </p>
               </div>
@@ -154,7 +131,7 @@
               <summary>Who do I contact about landscaping or common areas?</summary>
               <div class="faq-body">
                 <p>
-                  Placeholder: Contact the Property Manager or Board Liaison at
+                  Contact the Property Manager or Board Liaison at
                   <a href="mailto:landscape@cliftongrove.org">landscape@cliftongrove.org</a>.
                 </p>
               </div>
@@ -164,8 +141,7 @@
               <summary>Where can I find governing documents and bylaws?</summary>
               <div class="faq-body">
                 <p>
-                  Placeholder: Link your CC&Rs, bylaws, rules & regulations, and meeting
-                  minutes in the “Useful Links” section below.
+                  Governing docs and minutes will be linked in the “Useful Links” section below.
                 </p>
               </div>
             </details>
@@ -174,10 +150,14 @@
               <summary>What’s the policy for trash/recycling pickup?</summary>
               <div class="faq-body">
                 <p>
-                  Disposal is handled by <a href="https://www.patriotdisposalservices.com/">Patriot Disposal Services</a>. Please visit their site for schedule changes due to weather & holidays.
+                  Disposal is handled by
+                  <a href="https://www.patriotdisposalservices.com/" target="_blank" rel="noopener noreferrer">
+                    Patriot Disposal Services
+                  </a>.
                 </p>
                 <p>
-                  Trash is picked up every <b>Tuesday</b> and <b>Friday</b>, recycling is picked up every <b>Wednesday</b> (please do not include glass). Place bins curbside the night before.
+                  Trash: <b>Tuesday</b> and <b>Friday</b>. Recycling: <b>Wednesday</b> (no glass).
+                  Place bins curbside the night before.
                 </p>
               </div>
             </details>
@@ -205,38 +185,36 @@
           </div>
 
           <div class="links-grid">
-            <a class="link-card" href="https://www.patriotdisposalservices.com/" aria-disabled="true" target="_blank">
+            <a class="link-card" href="https://www.patriotdisposalservices.com/" target="_blank" rel="noopener noreferrer">
               <div class="link-title">Trash & Recycling</div>
               <div class="link-sub">Patriot Disposal Services</div>
             </a>
 
-            <a class="link-card" href="#" aria-disabled="true">
+            <a class="link-card" href="#">
               <div class="link-title">Governing Documents</div>
               <div class="link-sub">CC&Rs, bylaws, rules & regulations</div>
             </a>
 
-            <a class="link-card" href="#" aria-disabled="true">
+            <a class="link-card" href="#">
               <div class="link-title">Meeting Minutes</div>
               <div class="link-sub">Board minutes and community updates</div>
             </a>
 
-            <a class="link-card" href="#" aria-disabled="true">
+            <a class="link-card" href="#">
               <div class="link-title">ARC Forms</div>
               <div class="link-sub">Architectural request form + guidance</div>
             </a>
 
-            <a class="link-card" href="#" aria-disabled="true">
+            <a class="link-card" href="#">
               <div class="link-title">Local Utilities</div>
               <div class="link-sub">Electric, water, gas, internet providers</div>
             </a>
 
-            <a class="link-card" href="#" aria-disabled="true">
+            <a class="link-card" href="#">
               <div class="link-title">Emergency & Non-Emergency</div>
               <div class="link-sub">County resources and contacts</div>
             </a>
           </div>
-
-          <p></p>
         </div>
       </section>
     </main>
@@ -249,15 +227,14 @@
         </div>
         <div class="footer-links">
           <a href="#faqs">FAQs</a>
-          <a href="#board">Board</a>
           <a href="#links">Links</a>
         </div>
       </div>
     </footer>
 
+    <script src="./script.js"></script>
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
     </script>
   </body>
 </html>
-
